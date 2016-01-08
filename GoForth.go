@@ -39,6 +39,8 @@ func loop() {
       var input = scanner.Text();
       var symbols = core.Parse(input);
       fmt.Println(symbols);
+      core.Push("a");
+      fmt.Println(core.Pop());
       fmt.Print(prompt);
   }
 

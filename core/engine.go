@@ -17,6 +17,8 @@ func action(symbol string) {
   switch symbol {
     case "+":
       err = add();
+    case "-":
+      err = subtract();
     case ".":
       symbol, err = print();
       if symbol != "" {

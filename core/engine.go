@@ -11,6 +11,13 @@ func prompt() string {
   return "FORTH> ";
 }
 
+func action(symbol string) {
+  switch symbol {
+    default:
+      Push(symbol)
+  }
+}
+
 /** Loops collecting information until `die` */
 func loop() {
   prompt := prompt();
@@ -20,9 +27,11 @@ func loop() {
   for scanner.Scan() {
       var input = scanner.Text();
       var symbols = Parse(input);
-      fmt.Println(symbols);
-      Push("a");
+      for i:=0; i<len(symbols); i++ {
+        action(symbols[i]);
+      }
       fmt.Println(Pop());
+      fmt.Println(stack);
       fmt.Print(prompt);
   }
 

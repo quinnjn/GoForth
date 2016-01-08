@@ -12,11 +12,23 @@ func prompt() string {
 }
 
 func action(symbol string) {
+  var err error = nil;
+
   switch symbol {
     case "+":
-      add();
+      err = add();
+    case ".":
+      symbol, err = print();
+      if symbol != "" {
+        fmt.Println(symbol);
+      }
     default:
       Push(symbol);
+  }
+
+  if err != nil {
+    fmt.Print("ERROR: ");
+    fmt.Println(err);
   }
 }
 
@@ -32,11 +44,8 @@ func loop() {
       for i:=0; i<len(symbols); i++ {
         action(symbols[i]);
       }
-      fmt.Println(Pop());
-      fmt.Println(stack);
       fmt.Print(prompt);
   }
-
 }
 
 

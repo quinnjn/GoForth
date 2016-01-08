@@ -40,7 +40,7 @@ func cleanup() {
   }
 }
 
-/** Loops collecting information until `die` */
+/** Loops collecting information until `bye` */
 func loop() {
   defer cleanup();
   prompt := prompt();
@@ -50,6 +50,9 @@ func loop() {
   for scanner.Scan() {
       var input = scanner.Text();
       var symbols = Parse(input);
+      if len(symbols) == 0 {
+        fmt.Println(stack);
+      }
       for i:=0; i<len(symbols); i++ {
         action(symbols[i]);
       }

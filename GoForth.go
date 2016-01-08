@@ -2,8 +2,6 @@ package main
 
 import (
   "fmt"
-  "bufio"
-  "os"
   "github.com/quinnjn/GoForth/core"
 )
 
@@ -19,35 +17,12 @@ func printMotd() {
 func setup() {
   printMotd();
 }
-
-/** Builds a prompt */
-func prompt() string {
-  return "FORTH> ";
-}
-
 func parse(input string) {
   //TODO parse the input
-}
-
-/** Loops collecting information until `die` */
-func loop() {
-  var prompt string = prompt();
-  scanner := bufio.NewScanner(os.Stdin)
-
-  fmt.Print(prompt);
-  for scanner.Scan() {
-      var input = scanner.Text();
-      var symbols = core.Parse(input);
-      fmt.Println(symbols);
-      core.Push("a");
-      fmt.Println(core.Pop());
-      fmt.Print(prompt);
-  }
-
 }
 
 /** Starts the FORTH interrupter */
 func main() {
   setup();
-  loop();
+  core.Run();
 }

@@ -22,6 +22,8 @@ func action(symbol string) {
       if symbol != "" {
         fmt.Println(symbol);
       }
+    case "bye":
+      panic("bye!");
     default:
       Push(symbol);
   }
@@ -32,8 +34,15 @@ func action(symbol string) {
   }
 }
 
+func cleanup() {
+  if r := recover(); r != nil {
+    fmt.Println(r);
+  }
+}
+
 /** Loops collecting information until `die` */
 func loop() {
+  defer cleanup();
   prompt := prompt();
   scanner := bufio.NewScanner(os.Stdin)
 

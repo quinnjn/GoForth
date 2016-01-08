@@ -13,8 +13,10 @@ func prompt() string {
 
 func action(symbol string) {
   switch symbol {
+    case "+":
+      add();
     default:
-      Push(symbol)
+      Push(symbol);
   }
 }
 

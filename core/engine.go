@@ -24,6 +24,8 @@ func action(symbol string) {
       }
     case "bye":
       panic("bye!");
+    case "dump":
+      fmt.Println(stack);
     default:
       Push(symbol);
   }
@@ -51,7 +53,7 @@ func loop() {
       var input = scanner.Text();
       var symbols = Parse(input);
       if len(symbols) == 0 {
-        fmt.Println(stack);
+        action("dump");
       }
       for i:=0; i<len(symbols); i++ {
         action(symbols[i]);

@@ -4,6 +4,7 @@ import (
   "fmt"
   "bufio"
   "os"
+  "github.com/quinnjn/GoForth/core"
 )
 
 /** Version of GoForth */
@@ -36,7 +37,8 @@ func loop() {
   fmt.Print(prompt);
   for scanner.Scan() {
       var input = scanner.Text();
-      parse(input);
+      var symbols = core.Parse(input);
+      fmt.Println(symbols);
       fmt.Print(prompt);
   }
 

@@ -15,6 +15,8 @@ func action(symbol string) {
   var err error = nil;
 
   switch symbol {
+    case "*":
+      err = multiply();
     case "+":
       err = add();
     case "-":
@@ -27,7 +29,7 @@ func action(symbol string) {
     case "bye":
       panic("bye!");
     case "dump":
-      fmt.Println(stack);
+      fmt.Println("unimplemented");
     default:
       Push(symbol);
   }

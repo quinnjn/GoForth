@@ -6,7 +6,7 @@ import (
 )
 
 /** Version of GoForth */
-const VERSION string = "0.0.0";
+const VERSION string = "0.1.0";
 
 /** Prints the MOTD */
 func printMotd() {
